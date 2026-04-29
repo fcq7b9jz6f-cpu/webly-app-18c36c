@@ -1,21 +1,26 @@
-import { Link } from "react-router-dom";
-import { MoveLeft } from "lucide-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Music } from 'lucide-react';
 
 const NotFound = () => {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center text-center p-4">
-      <div>
-        <h1 className="text-[120px] font-serif font-black text-stone-200">٤٠٤</h1>
-        <h2 className="text-3xl font-bold -mt-10 mb-6">آه يا حبيبي.. الصفحة تاهت</h2>
-        <p className="text-stone-500 mb-10 text-lg">يبدو أن الصفحة التي تبحث عنها قد غنت بغير كلماتنا.</p>
-        <Link 
-          to="/" 
-          className="inline-flex items-center gap-2 px-8 py-4 bg-amber-600 text-white rounded-full font-bold hover:bg-amber-700 transition-all group"
-        >
-          <MoveLeft className="w-5 h-5 group-hover:-translate-x-2 transition-transform" />
-          العودة للرئيسية
-        </Link>
+    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 bg-[#FAF9F6]">
+      <div className="relative mb-8">
+        <h1 className="text-[12rem] font-bold text-[#C5A059]/10 leading-none">404</h1>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Music className="w-24 h-24 text-[#C5A059] animate-bounce" />
+        </div>
       </div>
+      <h2 className="text-3xl font-bold text-[#1a1a1a] mb-4">عذراً، هذه الصفحة رحلت..</h2>
+      <p className="text-gray-600 mb-8 max-w-md mx-auto leading-relaxed">
+        لكن صوت الست باقٍ معنا دائماً. ربما أضعت الطريق في أروقة الفن الجميل، دعنا نعد للمسرح الرئيسي.
+      </p>
+      <Link 
+        to="/" 
+        className="bg-[#1a1a1a] text-[#C5A059] px-8 py-3 rounded-none font-bold hover:bg-[#C5A059] hover:text-[#1a1a1a] transition-all"
+      >
+        العودة للرئيسية
+      </Link>
     </div>
   );
 };

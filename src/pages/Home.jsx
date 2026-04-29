@@ -1,81 +1,69 @@
-import { motion } from "framer-motion";
-import { Play, Calendar, Star, Quote } from "lucide-react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Play, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="flex flex-col">
+    <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-stone-950">
-        <div className="absolute inset-0 opacity-40">
+      <section className="relative h-[90vh] flex items-center justify-center bg-[#1a1a1a] text-white">
+        <div className="absolute inset-0 z-0 opacity-40">
           <img 
             src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=2000" 
-            alt="Microphone Vintage" 
+            alt="Microphone Background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-[#1a1a1a]"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="text-amber-500 font-serif tracking-widest uppercase text-sm mb-4 block">سيدة الغناء العربي</span>
-            <h1 className="text-6xl md:text-8xl font-serif font-bold text-white mb-6">أُم كُلثوم</h1>
-            <p className="text-xl md:text-2xl text-stone-300 max-w-2xl mx-auto leading-relaxed mb-10">
-              صوت مصر الخالد، وقيثارة الشرق التي لم ولن تغيب عن وجدان العرب.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/songs" className="px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white rounded-full font-bold transition-all transform hover:scale-105 flex items-center gap-2">
-                <Play className="w-5 h-5 fill-current" /> استمع لروائعها
-              </Link>
-              <Link to="/biography" className="px-8 py-4 bg-transparent border-2 border-stone-600 text-stone-300 hover:border-amber-500 hover:text-amber-500 rounded-full font-bold transition-all transform hover:scale-105">
-                اكتشف مسيرتها
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Quick Stats */}
-      <section className="py-20 bg-stone-100">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { icon: Calendar, title: "7 عقود", desc: "من العطاء الفني المتواصل الذي غير شكل الطرب العربي." },
-              { icon: Star, title: "300+ أغنية", desc: "أرشيف من الروائع الخالدة بين العاطفي والوطني والديني." },
-              { icon: Quote, title: "كوكب الشرق", desc: "لقب أطلقه عليها محبوها وبقي محفوراً في تاريخ الفن." },
-            ].map((stat, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2 }}
-                className="text-center p-8 bg-white rounded-2xl shadow-xl shadow-stone-200/50"
-              >
-                <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <stat.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">{stat.title}</h3>
-                <p className="text-stone-600 leading-relaxed">{stat.desc}</p>
-              </motion.div>
-            ))}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center px-4"
+        >
+          <span className="text-[#C5A059] uppercase tracking-[0.2em] font-medium block mb-4">آه من زماني.. آه من غرامي</span>
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white tracking-widest leading-tight">أم كلثوم</h1>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            سيدة الغناء العربي، كوكب الشرق، الهرم الرابع.. رحلة خالدة في وجدان كل عربي عبر الزمن.
+          </p>
+          <div className="flex justify-center gap-6">
+            <Link to="/songs" className="bg-[#C5A059] text-[#1a1a1a] px-10 py-4 rounded-none font-bold text-lg hover:bg-white transition-all">
+              استمع لروائعها
+            </Link>
+            <Link to="/biography" className="border border-white px-10 py-4 rounded-none font-bold text-lg hover:bg-white hover:text-[#1a1a1a] transition-all">
+              قصة حياتها
+            </Link>
           </div>
+        </motion.div>
+      </section>
+
+      {/* Legacy Stats */}
+      <section className="py-20 bg-white border-y border-[#C5A059]/10">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          {[
+            { value: "300+", label: "أغنية خالدة" },
+            { value: "12", label: "فيلم سينمائي" },
+            { value: "50", label: "عام من العطاء" },
+            { value: "∞", label: "حب في القلوب" }
+          ].map((stat, idx) => (
+            <div key={idx}>
+              <h3 className="text-4xl font-bold text-[#C5A059] mb-2">{stat.value}</h3>
+              <p className="text-gray-600 uppercase tracking-wide text-sm">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Featured Quote */}
-      <section className="py-24 bg-stone-900 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-amber-600/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <Quote className="w-16 h-16 text-amber-500 mx-auto mb-8 opacity-50" />
-          <h2 className="text-3xl md:text-5xl font-serif italic leading-tight max-w-4xl mx-auto mb-8">
-            "إن الفن لم يكن يوماً مجرد غناء، بل هو رسالة وطن وأمة، وحينما أغني أشعر أنني أحمل تاريخ مصر في صوتي."
-          </h2>
-          <p className="text-amber-500 font-bold">— السيدة أم كلثوم</p>
+      {/* Quote Section */}
+      <section className="py-24 bg-[#FAF9F6] relative">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <Star className="mx-auto w-12 h-12 text-[#C5A059]/30 mb-8" />
+          <blockquote className="text-3xl md:text-4xl italic text-gray-800 leading-snug mb-8 font-serif">
+            "الفن هو اللغة الوحيدة التي لا تحتاج لمترجم، والجمهور هو المعلم الأول والملهم الأكبر في كل خطوة خطوتها."
+          </blockquote>
+          <cite className="text-[#C5A059] font-bold text-xl">— السيدة أم كلثوم</cite>
         </div>
       </section>
     </div>

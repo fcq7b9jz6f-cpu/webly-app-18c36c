@@ -7,15 +7,15 @@
 هذا الملف يستخدمه Webly كذاكرة طويلة الأمد للمشروع. لا تحذفه.
 
 ### الملفات
-- `/App.jsx`
-- `/pages/Home.jsx`
 - `/pages/Songs.jsx`
 - `/main.jsx`
-- `/components/Navbar.jsx`
-- `/pages/Biography.jsx`
 - `/pages/Gallery.jsx`
+- `/App.jsx`
+- `/pages/Home.jsx`
+- `/components/Navbar.jsx`
 - `/components/Footer.jsx`
 - `/pages/NotFound.jsx`
+- `/pages/Biography.jsx`
 
 ### النشر
 - البناء: ملفات HTML/JS ثابتة

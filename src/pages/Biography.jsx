@@ -1,77 +1,50 @@
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const Biography = () => {
   const events = [
-    {
-      year: "1898",
-      title: "الميلاد والنشأة",
-      desc: "ولدت فاطمة إبراهيم البلتاجي في قرية 'طماي الزهايرة' بمحافظة الدقهلية. بدأت الغناء وهي طفلة مع أبناء عمومتها في الموالد بزي بدوي كغلام."
-    },
-    {
-      year: "1923",
-      title: "الانتقال إلى القاهرة",
-      desc: "نقطة التحول الكبرى بلقائها بالشيخ أبو العلا محمد والموسيقار محمد القصبجي، وتأسيس فرقتها الخاصة."
-    },
-    {
-      year: "1940-1950",
-      title: "العصر الذهبي",
-      desc: "تربعت على عرش الغناء، تلاحمت مع قضايا الوطن، وبدأت حفلات الخميس الشهيرة التي كان العالم العربي ينصت لها من المحيط إلى الخليج."
-    },
-    {
-      year: "1967",
-      title: "المجهود الحربي",
-      desc: "قادت حملة عالمية لجمع التبرعات من أجل إعادة إعمار مصر بعد النكسة، غنت في باريس والعديد من العواصم العربية."
-    },
-    {
-      year: "1975",
-      title: "الرحيل الخالد",
-      desc: "ودعها الملايين في واحدة من أكبر الجنازات في التاريخ المعاصر، لتبقى ذكراها حية في كل بيت عربي."
-    }
+    { year: "1898", title: "الميلاد", desc: "ولدت فاطمة بنت الشيخ إبراهيم البلتاجي في قرية طماي الزهايرة بمركز السنبلاوين." },
+    { year: "1923", title: "الرحيل للقاهرة", desc: "انتقلت للقاهرة لتبدأ مسيرتها الاحترافية بمساعدة الشيخ أبو العلا محمد." },
+    { year: "1934", title: "الإذاعة المصرية", desc: "كانت أول من غنى في الإذاعة المصرية عند افتتاحها بصوتها الساحر." },
+    { year: "1964", title: "لقاء السحاب", desc: "أول تعاون مع الموسيقار محمد عبد الوهاب في أغنية (إنت عمري)." },
+    { year: "1975", title: "الوداع", desc: "رحلت عن عالمنا تاركة خلفها إرثاً فنياً لم ولن يتكرر في تاريخ الموسيقى." },
   ];
 
   return (
-    <div className="py-20 bg-stone-50">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <header className="text-center mb-20">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-stone-900">سيرة ومسيرة</h1>
-          <div className="w-24 h-1 bg-amber-600 mx-auto"></div>
-        </header>
+    <div className="bg-white min-h-screen">
+      <div className="bg-[#1a1a1a] text-white py-24 px-4 text-center">
+        <h1 className="text-5xl font-bold mb-6">رحلة الخلود</h1>
+        <p className="text-gray-400 max-w-2xl mx-auto text-xl">من طفولة قروية بسيطة إلى أن أصبحت رمزاً وطنياً وفنياً عابراً للقارات.</p>
+      </div>
 
-        <div className="relative border-r-2 border-amber-900/10 pr-8 space-y-16">
+      <div className="max-w-4xl mx-auto py-24 px-4">
+        <div className="relative">
+          {/* Vertical Line */}
+          <div className="absolute right-0 md:right-1/2 top-0 bottom-0 w-px bg-[#C5A059]/30 mr-4 md:mr-0"></div>
+
           {events.map((event, idx) => (
             <motion.div 
-              key={idx}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative"
+              key={idx}
+              className={`relative mb-20 flex items-center justify-between w-full ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
             >
-              {/* Dot */}
-              <div className="absolute -right-[41px] top-0 w-5 h-5 bg-amber-600 rounded-full border-4 border-stone-50"></div>
-              
-              <div className="bg-white p-8 rounded-2xl shadow-lg border border-stone-100">
-                <span className="inline-block px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-lg font-bold mb-4">
-                  {event.year}
-                </span>
-                <h3 className="text-2xl font-bold mb-4 text-stone-800">{event.title}</h3>
-                <p className="text-stone-600 leading-relaxed text-lg italic">
-                  {event.desc}
-                </p>
+              {/* Content */}
+              <div className="w-full md:w-[45%] pr-12 md:pr-0">
+                <div className="bg-[#FAF9F6] p-8 border-l-4 border-[#C5A059] shadow-md">
+                  <span className="text-[#C5A059] font-black text-2xl mb-2 block">{event.year}</span>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">{event.title}</h3>
+                  <p className="text-gray-600 leading-loose">{event.desc}</p>
+                </div>
               </div>
+
+              {/* Dot */}
+              <div className="absolute right-0 md:right-1/2 w-8 h-8 bg-[#1a1a1a] border-4 border-[#C5A059] rounded-full translate-x-1/2 z-10 hidden md:block"></div>
+              
+              <div className="hidden md:block w-[45%]"></div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-24 p-12 bg-stone-900 text-white rounded-3xl relative overflow-hidden">
-          <div className="relative z-10">
-            <h2 className="text-3xl font-serif mb-6">أثر لا ينمحي</h2>
-            <p className="text-stone-400 text-lg leading-loose mb-8">
-              لم تكن أم كلثوم مجرد مطربة، بل كانت ظاهرة ثقافية واجتماعية وسياسية. استطاعت بصوتها أن توحد الشعوب العربية، وكانت حفلاتها تعطل حركة المرور في كبرى العواصم. تميزت بدقة اختيار الكلمات (أحمد شوقي، بيرم التونسي) والألحان (السنباطي، بليغ حمدي، عبد الوهاب).
-            </p>
-          </div>
-          <div className="absolute bottom-0 left-0 opacity-10 translate-y-1/2 -translate-x-1/2">
-             <span className="text-[200px] font-serif font-bold">كلثوم</span>
-          </div>
         </div>
       </div>
     </div>
